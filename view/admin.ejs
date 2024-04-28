@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <title>Admin</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+          <a href="#" class="logo">AUTO TAXER 🏛️</a>
+          <ul class="nav-links">
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Transaction</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">@Suporrt</a></li>
+          </ul>
+          <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </nav>
+      <h1 class="he">AUTO TAXER 🏛️</h1>
+      <center> <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header"><%= user.username %></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= user.bank %></h5>
+          <p class="card-text">Account no: <%= user.accno%></p>
+          <a href="/login/admin/<%= user.id %>/balance">Click here to see Balance!</a>
+        </div>
+      </div>
+    </center>
+      <script>
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+      </script>
+      
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

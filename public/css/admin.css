@@ -1,0 +1,91 @@
+body{
+  background: url(https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714262400&semt=ais);
+  background-size: cover;
+}
+.he{
+  text-align: center;
+  padding-top: 4rem;
+  color: beige;
+}
+.navbar {
+    background-color: #131212;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(129, 123, 123, 0.1);
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: #dadada;
+    margin: 5px;
+  }
+  .card{
+    margin-top: 3rem;
+    box-shadow: 10px 10px 5px lightblue;
+
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .nav-links {
+      display: none;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .nav-links li {
+      margin: 10px 0;
+    }
+    
+    .hamburger {
+      display: block;
+    }
+  }
