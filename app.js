@@ -50,21 +50,27 @@ const data = [
 ]
 
 app.get('/login', (req, res) => {
+
     res.render('login.ejs')
 })
 
 app.get('/login/admin/:id', (req, res) => {
+
     const id = req.params.id;
     const user = data.find(item => item.id === parseInt(id)); 
     res.render('admin.ejs',{user})
+
 })
 
 app.post('/login', (req, res) => {
+
     const { username, password } = req.body;
     console.log(username, password);
 
     function checkCredentials(username, password, data) {
+
         for (let i = 0; i < data.length; i++) {
+
             if (data[i].username === username && data[i].password === password) {
                 return res.render('admin.ejs', { user: data[i] });
             }
@@ -77,6 +83,7 @@ app.post('/login', (req, res) => {
 
 
 app.get('/login/admin/:id/balance', (req , res) => {
+    
     const id = req.params.id;
     const user = data.find(item => item.id === parseInt(id)); 
     console.log(id);
