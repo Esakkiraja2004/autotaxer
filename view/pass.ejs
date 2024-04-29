@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI PIN Form</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.pin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pin-input {
+  margin: 0 10px;
+}
+
+input[type="password"] {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="password"]:focus {
+  border-color: #4caf50;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Authentication</h1>
+  <h2>Enter UPI PIN</h2>
+  <form action="/login/admin/<%= user.id %>/balance" method="post" class="pin-form">
+    <div class="pin-row">
+      <div class="pin-input">
+        <input type="password" maxlength="1" name="digit1" />
+      </div>
+      <div class="pin-input">
+        <input type="password" maxlength="1" name="digit2" />
+      </div>
+      <div class="pin-input">
+        <input type="password" maxlength="1" name="digit3" />
+      </div>
+      <div class="pin-input">
+        <input type="password" maxlength="1" name="digit4" />
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+</div>
+</body>
+</html>

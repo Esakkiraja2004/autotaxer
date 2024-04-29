@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { userInfo } = require('os');
 const app = express()
 const path = require('path')
 const port  = 3000;
@@ -29,7 +30,8 @@ const data = [
         branch:'Nanguneri',
         accno: 345864258076,
         ifsc:'SBIN0015',
-        balance: 500000
+        balance: 500000,
+        code:2401
 
     },
     {
@@ -44,7 +46,8 @@ const data = [
         branch:'Nanguneri',
         accno: 345864258076,
         ifsc:'SBIN0015',
-        balance: 500000
+        balance: 500000,
+        code:1234
 
     }
 ]
@@ -72,7 +75,8 @@ app.post('/login', (req, res) => {
         for (let i = 0; i < data.length; i++) {
 
             if (data[i].username === username && data[i].password === password) {
-                return res.render('admin.ejs', { user: data[i] });
+                // Redirect to the admin page with the user's ID
+                return res.redirect(`/login/admin/${data[i].id}`);
             }
         }
         res.render("error.ejs");
@@ -82,14 +86,52 @@ app.post('/login', (req, res) => {
 });
 
 
-app.get('/login/admin/:id/balance', (req , res) => {
-    
+app.get('/login/admin/:id/balance', (req, res) => {
+
+
     const id = req.params.id;
     const user = data.find(item => item.id === parseInt(id)); 
-    console.log(id);
-    res.render("balance.ejs", {user})
+    console.log(user); // Log the user object
+    res.render("pass.ejs", { user });
+});
+
+
+app.post('/login/admin/:id/balance', (req, res) => {
+
+
+    const digit1 = parseInt(req.body.digit1);
+    const digit2 = parseInt(req.body.digit2);
+    const digit3 = parseInt(req.body.digit3);
+    const digit4 = parseInt(req.body.digit4);
+  
+    // Check if all digits are valid integers
+    if (!isNaN(digit1) && !isNaN(digit2) && !isNaN(digit3) && !isNaN(digit4)) {
+      // Extract the PIN entered in the form
+      const pin = digit1 * 1000 + digit2 * 100 + digit3 * 10 + digit4;
+      
+      // Find the user based on the id in the route parameter
+      const id = parseInt(req.params.id);
+      const user = data.find(item => item.id === id);
+    
+      // Check if the user and PIN match the code in the data array
+      if (user && pin === user.code) {
+        res.render('balance.ejs', { user });
+      } else {
+        res.render('error.ejs')
+      }
+    } else {
+        res.render('error.ejs')
+    }
+});
+
+app.get('/login/admin/:id/profile', (req,res) =>{
+
+    const id = parseInt(req.params.id);
+    const user = data.find(item => item.id === id);
+    res.render('profile.ejs',{ user})
 })
 
+  
   
 app.listen(port,() => {
 
