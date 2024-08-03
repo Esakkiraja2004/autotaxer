@@ -13,9 +13,9 @@
           <a href="#" class="logo">AUTO TAXER 🏛️</a>
           <ul class="nav-links">
             <li><a href="/login/admin/<%= user.id %>/profile">My Profile</a></li>
-            <li><a href="#">Transaction</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">@Suporrt</a></li>
+            <li><a href="/login/admin/<%= user.id %>/transactions">Transaction</a></li>
+            <li><a href="/login/admin/<%= user.id %>/service">Services</a></li>
+            <li><a href="#">@Suppport</a></li>
           </ul>
           <div class="hamburger">
             <div class="line"></div>
@@ -34,6 +34,10 @@
         </div>
       </div>
     </center>
+    <hr>
+<div>
+  <center> <a href="/login/admin/<%= user.id %>/profile"><button type="button"class="btn btn-primary btn-lg">Salary Details</button></a></a><center>
+</div>
       <script>
       const hamburger = document.querySelector('.hamburger');
       const navLinks = document.querySelector('.nav-links');

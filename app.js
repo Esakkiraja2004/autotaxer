@@ -29,6 +29,7 @@ const data = [
         bank: 'state bank of india',
         branch:'Nanguneri',
         accno: 345864258076,
+        salary:100000,
         ifsc:'SBIN0015',
         balance: 500000,
         code:2401
@@ -45,6 +46,7 @@ const data = [
         bank: 'American bank of india',
         branch:'Nanguneri',
         accno: 345864258076,
+        salary:100000,
         ifsc:'SBIN0015',
         balance: 500000,
         code:1234
@@ -131,6 +133,20 @@ app.get('/login/admin/:id/profile', (req,res) =>{
     res.render('profile.ejs',{ user})
 })
 
+
+app.get('/login/admin/:id/transactions', (req,res) =>{
+
+    const id = parseInt(req.params.id);
+    const user = data.find(item => item.id === id);
+    res.render('trans.ejs',{user})
+});
+
+app.get('/login/admin/:id/service', (req,res) =>{
+
+    const id = parseInt(req.params.id);
+    const user = data.find(item => item.id === id);
+    res.render('service.ejs',{user})
+});
   
   
 app.listen(port,() => {
